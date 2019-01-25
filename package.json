@@ -10,7 +10,6 @@
     "client": "npm start --prefix village",
     "dev": "concurrently \"npm run server\" \"npm run village\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix village && npm run build --prefix village"
-  
   },
   "author": "",
   "license": "ISC",
