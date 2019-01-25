@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 const baseUrl = 'http://localhost:3333';
 
 const SmurfForm = props => {
-console.log(props);
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (props.isUpdating) {
+      props.updateSmurf();
+    } else {
+      props.addSmurf();
+    }
+  }
 		return (
-			<Form onSubmit={props.addSmurf} className="smurf-form">
+			<Form onSubmit={handleSubmit()} className="smurf-form">
 				<h1>Create a new Smurf!</h1>
 				<Row form>
 					<Col md={12}>
