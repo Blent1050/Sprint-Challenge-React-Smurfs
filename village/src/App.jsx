@@ -8,17 +8,17 @@ import SmurfForm from './components/SmurfForm';
 import Smurfs from './components/Smurfs';
 import NavComponent from './components/NavComponent'
 const baseUrl = 'http://localhost:3333';
-
+const clearedItem = {
+	name: '',
+	age: '',
+	email: ''
+};
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
       smurfs: [],
-      newSmurf: {
-				name: '',
-				age: '',
-				height: ''
-			},
+      newSmurf: clearedItem,
       isOpen: false,
       isUpdating: false
 		};
@@ -39,8 +39,8 @@ class App extends Component {
   }
 
   //Create
-	addSmurf = (event) => {
-		event.preventDefault();
+	addSmurf = () => {
+		
 		axios
 			.post(`${baseUrl}/smurfs`, this.state.newSmurf)
 			.then((res) => {
@@ -68,29 +68,24 @@ class App extends Component {
       });
   };
   //Update
-  populateForm = (e, id) => {
-    e.preventDefault();
+  populateForm = (id) => {
     this.setState({
       newSmurf: this.state.smurfs.find(smurf => smurf.id === id),
       isUpdating: true
     });
-    this.props.history.push('/add');
+    this.props.history.push(`/add/`);
   };
 
   updateSmurf= () => {
     axios
-      .put(`${baseUrl}/smurfs/${this.state.smurfs.id}`, this.state.newSmurf)
+      .put(`${baseUrl}/smurfs/${this.state.newSmurf.id}`, this.state.newSmurf)
       .then(res => {
         this.setState({
           smurfs: res.data,
           isUpdating: false,
-          smurf: {
-            name: '',
-            age: '',
-            height: ''
-          }
+          smurf: clearedItem
         });
-        this.props.history.push('/smurfs');
+        this.props.history.push('/');
       })
       .catch(err => {
         console.log(err);
@@ -108,14 +103,13 @@ class App extends Component {
         }
 			};
 		});
-		console.log(e.target.value);
 	};
 
 	render() {
 		return (
 			<div className="App">
         <NavComponent/>
-				<Route exact path="/" render={props => (<Smurfs {...props} deleteSmurf={this.deleteSmurf} smurfs={this.state.smurfs}/>)} />
+				<Route exact path="/" render={props => (<Smurfs {...props} populateForm={this.populateForm} deleteSmurf={this.deleteSmurf} smurfs={this.state.smurfs}/>)} />
 				<Route path="/add" render={props => (<SmurfForm isUpdating={this.state.isUpdating} updateSmurf={this.updateSmurf}  handleInputChange={this.handleInputChange}  addSmurf={this.addSmurf} smurf={this.state.smurfs}/>)}  />
 			</div>
 		);

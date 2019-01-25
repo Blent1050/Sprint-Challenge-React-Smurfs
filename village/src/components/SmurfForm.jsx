@@ -3,16 +3,17 @@ import { Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'react
 const baseUrl = 'http://localhost:3333';
 
 const SmurfForm = props => {
-  function handleSubmit(e) {
-    e.preventDefault();
+  
+  function handleSubmit() {
     if (props.isUpdating) {
       props.updateSmurf();
     } else {
       props.addSmurf();
     }
   }
+
 		return (
-			<Form onSubmit={handleSubmit()} className="smurf-form">
+			<Form  className="smurf-form">
 				<h1>Create a new Smurf!</h1>
 				<Row form>
 					<Col md={12}>
@@ -55,7 +56,7 @@ const SmurfForm = props => {
 						</FormGroup>
 					</Col>
 				</Row>
-				<Button type="submit">Submit</Button>
+				<Button onClick={handleSubmit}>Submit</Button>
 			</Form>
 		);
 	}

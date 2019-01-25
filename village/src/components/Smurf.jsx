@@ -2,7 +2,6 @@ import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 
-
 const Smurf = props => {
   return (
     <div className="Smurf">
@@ -10,7 +9,7 @@ const Smurf = props => {
       <strong>{props.height} tall</strong>
       <p>{props.age} smurf years old</p>
       <div>
-        <Button color="primary">Update</Button>{'  '}
+        <Button onClick={() => props.populateForm(props.id)} color="primary">Update</Button>{'  '}
         <Button color="danger" onClick={props.toggle}>Delete</Button>
         <Modal isOpen={props.modal} toggle={props.toggle} className={props.className}>
           <ModalHeader>Delete Smurf</ModalHeader>

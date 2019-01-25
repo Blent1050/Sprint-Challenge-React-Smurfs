@@ -34,6 +34,7 @@ class Smurfs extends Component {
                 modal={this.state.modal}
                 deleteSmurf={this.props.deleteSmurf}
                 toggle={this.toggle}
+                populateForm={this.props.populateForm}
               />
             );
           })}
