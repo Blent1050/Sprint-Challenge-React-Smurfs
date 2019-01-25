@@ -1,8 +1,30 @@
 .App {
   text-align: center;
+  width: 100%;
+  background-color:#FFFDF6;
+  min-height: 100vh;
 }
 
 .smurf-form{
   width: 75%;
   margin: 0 auto;
+}
+.Smurfs ul{
+  margin: 0;
+  padding: 0;
+}
+.Smurf{
+  box-shadow: 0px 0px 87px -25px rgba(129,184,243,0.9);
+  background-color:#FFFDF6;
+  border: 1px solid rgba(129, 184, 243, 0.116);
+  padding: 10px;
+  width: 40%;
+  margin: 2rem auto;
+  border-radius: 3%;
+}
+.Smurf:hover{
+  box-shadow: 0px 0px 113px 2px rgba(129,184,243,0.84);
+}
+h2{
+  margin-top: 5px;
 }
