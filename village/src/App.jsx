@@ -29,7 +29,7 @@ class App extends Component {
 	//Get
 	componentDidMount() {
 		axios
-			.get(`${baseUrl}/smurfs`)
+			.get(`/smurfs`)
 			.then((res) => {
 				this.setState({ smurfs: res.data });
 				console.log(res.data);
@@ -40,7 +40,7 @@ class App extends Component {
 	//Create
 	addSmurf = () => {
 		axios
-			.post(`${baseUrl}/smurfs`, this.state.newSmurf)
+			.post(`/smurfs`, this.state.newSmurf)
 			.then((res) => {
 				console.log(res);
 				this.setState({
@@ -56,7 +56,7 @@ class App extends Component {
 	//delete
 	deleteSmurf = (e, itemId) => {
 		axios
-			.delete(`${baseUrl}/smurfs/${itemId}`)
+			.delete(`/smurfs/${itemId}`)
 			.then((res) => {
 				this.setState({ smurfs: res.data });
 			})
@@ -76,7 +76,7 @@ class App extends Component {
 
 	updateSmurf = () => {
 		axios
-			.put(`${baseUrl}/smurfs/${this.state.newSmurf.id}`, this.state.newSmurf)
+			.put(`/smurfs/${this.state.newSmurf.id}`, this.state.newSmurf)
 			.then((res) => {
 				this.setState({
 					smurfs: res.data,
