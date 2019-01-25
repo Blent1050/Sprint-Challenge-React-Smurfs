@@ -3,63 +3,21 @@ import axios from 'axios';
 import { Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 const baseUrl = 'http://localhost:3333';
 
-class SmurfForm extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			newSmurf: {
-				name: '',
-				age: '',
-				height: ''
-			}
-		};
-	}
-	//Create
-	addSmurf = (event) => {
-		event.preventDefault();
-		console.log(this.state.newSmurf);
-		axios
-			.post(`${baseUrl}/smurfs`, this.state.newSmurf)
-			.then((res) => {
-				console.log(res);
-				this.setState({
-					newSmurf: res.data
-        });
-        this.props.history.push("/");
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	};
-
-	handleInputChange = (e) => {
-		e.persist();
-		this.setState((prevState) => {
-			return {
-				newSmurf: {
-					...prevState.newSmurf,
-					[e.target.name]: e.target.value
-        }
-        
-			};
-		});
-		console.log(e.target.value);
-	};
-
-	render() {
+const SmurfForm = props => {
+console.log(props);
 		return (
-			<Form onSubmit={this.addSmurf} className="smurf-form">
+			<Form onSubmit={props.addSmurf} className="smurf-form">
 				<h1>Create a new Smurf!</h1>
 				<Row form>
 					<Col md={12}>
 						<FormGroup>
-							<Label for="exampleName">Name</Label>
+							<Label for="name">Name</Label>
 							<Input
-								onChange={this.handleInputChange}
-								value={this.state.name}
+								onChange={props.handleInputChange}
+								value={props.smurf.name}
 								type="text"
 								name="name"
-								id="exampleName"
+								id="name"
 								placeholder="Hefty Smurf"
 							/>
 						</FormGroup>
@@ -68,8 +26,8 @@ class SmurfForm extends Component {
 						<FormGroup>
 							<Label for="age">Age</Label>
 							<Input
-								onChange={this.handleInputChange}
-								value={this.state.age}
+								onChange={props.handleInputChange}
+								value={props.smurf.age}
 								type="text"
 								name="age"
 								id="age"
@@ -81,8 +39,8 @@ class SmurfForm extends Component {
 						<FormGroup>
 							<Label for="height">Height</Label>
 							<Input
-								onChange={this.handleInputChange}
-								value={this.state.height}
+								onChange={props.handleInputChange}
+								value={props.smurf.height}
 								type="text"
 								name="height"
 								id="height"
@@ -109,6 +67,5 @@ class SmurfForm extends Component {
 	// 		</form>{' '}
 	// 	</div>
 	// );
-}
 
 export default SmurfForm;
