@@ -3,12 +3,14 @@
   width: 100%;
   background-color:#FFFDF6;
   min-height: 100vh;
+  padding-bottom: 50px;
 }
 
 .smurf-form{
   width: 75%;
   margin: 0 auto;
 }
+
 .Smurfs ul{
   margin: 0;
   padding: 0;
@@ -25,6 +27,19 @@
 .Smurf:hover{
   box-shadow: 0px 0px 113px 2px rgba(129,184,243,0.84);
 }
-h2{
-  margin-top: 5px;
+h1{
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .App {
+    background-color: rgba(129,184,243,0.9);
+  }
+  h1{
+    color: #FFFDF6;
+  }
+  .Smurf{
+    width: 95%;
+    border-radius: none;
+  }
 }

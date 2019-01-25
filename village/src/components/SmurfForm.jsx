@@ -39,7 +39,8 @@ class SmurfForm extends Component {
 				newSmurf: {
 					...prevState.newSmurf,
 					[e.target.name]: e.target.value
-				}
+        }
+        
 			};
 		});
 		console.log(e.target.value);

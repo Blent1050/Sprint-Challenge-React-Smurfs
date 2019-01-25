@@ -32,28 +32,31 @@ export default class NavComponent extends React.Component {
 	render() {
 		return (
 			<div>
-				<Navbar color="light" light expand="md">
-          <NavbarBrand><Link to='/'>Smurf Village</Link></NavbarBrand>
+				<Navbar color="dark" light expand="md">
+					<Link className=" navbar-brand text-primary" to="/">
+						Smurf Village
+					</Link>
+
 					<NavbarToggler onClick={this.toggle} />
 					<Collapse isOpen={this.state.isOpen} navbar>
 						<Nav className="ml-auto" navbar>
 							<NavItem>
-								<BootstrapNav>
-									<NavLink to="/">Home</NavLink>
-								</BootstrapNav>
+								<NavLink className="text-primary nav-link" to="/">
+									Home
+								</NavLink>
 							</NavItem>
 							<NavItem>
-								<BootstrapNav>
-									<NavLink to="/add">Add Smurf</NavLink>
-								</BootstrapNav>
+								<NavLink className="text-primary nav-link" to="/add">
+									Add Smurf
+								</NavLink>
 							</NavItem>
 							<UncontrolledDropdown nav inNavbar>
-								<DropdownToggle nav caret>
+								<DropdownToggle className="text-primary" nav caret>
 									Account
 								</DropdownToggle>
 								<DropdownMenu right>
 									<DropdownItem>Login</DropdownItem>
-									<DropdownItem>Sign Out/DropdownItem></DropdownItem>
+									<DropdownItem>Sign Out/DropdownItem</DropdownItem>
 									<DropdownItem divider />
 									<DropdownItem>Remove All Smurfs</DropdownItem>
 								</DropdownMenu>
