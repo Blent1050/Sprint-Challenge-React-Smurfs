@@ -30,12 +30,22 @@ class App extends Component {
 				console.log(res.data);
 			})
 			.catch((err) => console.log(err));
-	}
+  }
+  //When updated get new smurfs
+  componentDidUpdate(){
+		axios
+			.get(`${baseUrl}/smurfs`)
+			.then((res) => {
+				this.setState({ smurfs: res.data });
+				console.log(res.data);
+			})
+			.catch((err) => console.log(err));
+  }
 
 	render() {
 		return (
 			<div className="App">
-      <NavComponent/>
+        <NavComponent/>
 				<Route exact path="/" render={props => (<Smurfs {...props} smurfs={this.state.smurfs}/>)} />
 				<Route path="/add" component={SmurfForm} />
 			</div>
