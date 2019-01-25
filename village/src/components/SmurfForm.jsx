@@ -3,11 +3,13 @@ import { Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'react
 const baseUrl = 'http://localhost:3333';
 
 const SmurfForm = props => {
-  
+  console.log(props)
   function handleSubmit() {
     if (props.isUpdating) {
+      console.log('updating true')
       props.updateSmurf();
     } else {
+      console.log('updating false')
       props.addSmurf();
     }
   }
@@ -21,7 +23,7 @@ const SmurfForm = props => {
 							<Label for="name">Name</Label>
 							<Input
 								onChange={props.handleInputChange}
-								value={props.smurf.name}
+								value={props.smurf.newSmurf.name}
 								type="text"
 								name="name"
 								id="name"
@@ -34,7 +36,7 @@ const SmurfForm = props => {
 							<Label for="age">Age</Label>
 							<Input
 								onChange={props.handleInputChange}
-								value={props.smurf.age}
+								value={props.smurf.newSmurf.age}
 								type="text"
 								name="age"
 								id="age"
@@ -47,7 +49,7 @@ const SmurfForm = props => {
 							<Label for="height">Height</Label>
 							<Input
 								onChange={props.handleInputChange}
-								value={props.smurf.height}
+								value={props.smurf.newSmurf.height}
 								type="text"
 								name="height"
 								id="height"

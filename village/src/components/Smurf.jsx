@@ -5,11 +5,12 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 const Smurf = props => {
   return (
     <div className="Smurf">
+    <div className="blur-bg" />
       <h3>{props.name}</h3>
       <strong>{props.height} tall</strong>
       <p>{props.age} smurf years old</p>
       <div>
-        <Button onClick={() => props.populateForm(props.id)} color="primary">Update</Button>{'  '}
+        <Button onClick={(e) => props.populateForm(e,props.id)} color="primary">Update</Button>{'  '}
         <Button color="danger" onClick={props.toggle}>Delete</Button>
         <Modal isOpen={props.modal} toggle={props.toggle} className={props.className}>
           <ModalHeader>Delete Smurf</ModalHeader>

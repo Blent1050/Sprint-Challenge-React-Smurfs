@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 import Smurf from './Smurf';
 
+
 class Smurfs extends Component {
   constructor(props) {
     super(props);
@@ -10,7 +11,6 @@ class Smurfs extends Component {
       modal: false
     }
   }
-
   toggle = () => {
     this.setState({
       modal: !this.state.modal
@@ -18,7 +18,6 @@ class Smurfs extends Component {
 }
 
   render() {
-   
     return (
       <div className="Smurfs">
         <h1>Smurf Village</h1>
@@ -34,7 +33,7 @@ class Smurfs extends Component {
                 modal={this.state.modal}
                 deleteSmurf={this.props.deleteSmurf}
                 toggle={this.toggle}
-                populateForm={this.props.populateForm}
+                populateForm={e => this.props.populateForm(e, smurf.id)}
               />
             );
           })}
